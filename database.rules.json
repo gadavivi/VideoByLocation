@@ -1,0 +1,29 @@
+{
+  "rules": {
+    "VideosLocations": {
+      ".indexOn": [
+        "g"
+      ],
+      ".read": "auth != null"
+    },
+    "Videos": {
+      ".indexOn": [
+        "owner"
+      ],
+      ".read": "auth != null",
+      "$videoId": {
+        ".write": "data.child('owner').val()==null || auth.uid == data.child('owner').val()",
+        "likes": {
+          "$likeId": {
+            ".write": "auth.uid==$likeId"
+          }
+        },
+        "views": {
+          "$viewId": {
+            ".write": "auth.uid==$viewId"
+          }
+        }
+      }
+    }
+  }
+}
