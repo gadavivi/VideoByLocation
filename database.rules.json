@@ -1,5 +1,10 @@
 {
   "rules": {
+    "users": {
+      "$userId": {
+        ".write": "auth.uid==$userId"
+      }
+    },
     "VideosLocations": {
       ".indexOn": [
         "g"
